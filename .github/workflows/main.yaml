@@ -1,0 +1,25 @@
+name: Despliegue en Surge
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Instalar Surge
+        run: npm install --global surge
+
+      - name: Desplegar en Surge
+        run: surge ./ simulador-ci-kerenag.surge.sh --token ${{ secrets.SURGE_TOKEN }}
