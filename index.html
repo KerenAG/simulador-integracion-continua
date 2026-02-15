@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador de Integración Continua</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <header>
+            <h1>Simulador de Integración Continua</h1>
+            <p class="subtitle">
+                Flujo automatizado desde el registro de cambios hasta el despliegue en Surge
+            </p>
+        </header>
+
+        <section class="pipeline">
+
+            <div class="stage" id="stage-commit">
+                <h2>Desarrollo</h2>
+                <p>Registro de cambios en el repositorio</p>
+                <button onclick="ejecutarCommit()">Registrar Cambios</button>
+                <span class="status pending">Pendiente</span>
+            </div>
+
+            <div class="connector"></div>
+
+            <div class="stage" id="stage-ci">
+                <h2>Integración Continua</h2>
+                <p>Ejecución automática del flujo de trabajo</p>
+                <button onclick="ejecutarPipeline()" disabled>
+                    Ejecutar Integración
+                </button>
+                <span class="status pending">Pendiente</span>
+            </div>
+
+            <div class="connector"></div>
+
+            <div class="stage" id="stage-deploy">
+                <h2>Despliegue</h2>
+                <p>Publicación automática en Surge</p>
+                <button onclick="ejecutarDespliegue()" disabled>
+                    Desplegar Aplicación
+                </button>
+                <span class="status pending">Pendiente</span>
+            </div>
+
+        </section>
+
+        <div class="log">
+            <h3>Registro de Ejecución</h3>
+            <div id="logOutput">
+                Esperando registro de cambios...
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
